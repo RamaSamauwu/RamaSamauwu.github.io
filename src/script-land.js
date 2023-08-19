@@ -1,13 +1,9 @@
 const imagenesContenedor = document.getElementById("contenedor-landing");
 
-// ... (código anterior)
-
-// Función para redireccionar a "ilustraciones.html"
 function redirectToIlustraciones() {
-  window.location.href = "./src/ilustraciones.html";
+  window.location.href = "ilustraciones.html";
 }
 
-// Agregar evento de clic a las imágenes
 const imagenes = imagenesContenedor.getElementsByClassName("imagen");
 for (let i = 0; i < imagenes.length; i++) {
   imagenes[i].addEventListener("click", redirectToIlustraciones);
@@ -35,7 +31,7 @@ function mostrarImagenesAleatorias(data) {
 
 // Petición HTTP para cargar el JSON
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "/src/ilustraciones.json");
+xhr.open("GET", "ilustraciones.json");
 xhr.onload = function () {
   if (xhr.status === 200) {
     const ilustracionesJSON = JSON.parse(xhr.responseText);
