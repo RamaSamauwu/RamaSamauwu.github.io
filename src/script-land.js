@@ -4,7 +4,7 @@ const imagenesContenedor = document.getElementById("contenedor-landing");
 
 // Función para redireccionar a "ilustraciones.html"
 function redirectToIlustraciones() {
-  window.location.href = "/src/ilustraciones.html";
+  window.location.href = "./src/ilustraciones.html";
 }
 
 // Agregar evento de clic a las imágenes
