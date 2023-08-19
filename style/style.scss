@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css?family=Lumanosimo");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 1.1px;
+}
+
+body,
+html {
+  background: hsl(215, 25, 94);
+  font-family: "Lumanosimo";
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto auto auto;
+  font-size: 43px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
+  height: 10vh;
+  list-style: none;
+
+  li {
+    width: 200px;
+    height: 50px;
+    transition: background-position-x 0.9s linear;
+    text-align: center;
+
+    a {
+      font-size: 20px;
+      color: rgb(102, 96, 96);
+      text-decoration: none;
+      transition: all 0.45s;
+    }
+
+    &:hover {
+      background: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0aD0iMzkwcHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDM5MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzkwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDk0ZjVjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNLTUwLDQ3LjU4NWMwLDAsOTcuNSwwLDI4MCwwCgljMTMuNzUsMCwyOC43NC0zOC43NzgsNDYuMTY4LTE5LjQxNkMyOTIuNjY5LDQ2LjUsMjQzLjYwMyw0Ny41ODUsNDQwLDQ3LjU4NWMzMS44MjEsMCwxMzAsMCwxMzAsIi8+Cjwvc3ZnPg==");
+      animation: line 0.8s;
+    }
+
+    &:hover a {
+      color: #d94f5c;
+    }
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}
+#contenedor-ilustraciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc(
+    300px * 3 + 120px * 2
+  ); /* Tamaño de 3 tarjetas más el espacio entre ellas */
+  margin: 0 auto;
+}
+
+.card-img img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+  cursor: pointer;
+  margin: 10px; /* Ajusta este valor según el espacio deseado entre las tarjetas */
+}
+
+.card-img:hover {
+  transform: scale(1.09);
+}
+
+#ampliar-ilustracion {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+#cerrar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#imagen-ampliada {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.contenedor-cv {
+  display: flex;
+  justify-content: center;
+  max-width: calc(300px * 3 + 50px * 2);
+  margin: 0 auto;
+
+  ul {
+    list-style: none;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  li {
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 2rem;
+    text-align: center; /* Añadir el estilo de centrado */
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+
+  small {
+    color: #777;
+  }
+}
+.contenedor {
+  display: flex;
+  justify-content: center;
+  max-width: calc(300px * 3 + 50px * 2);
+  margin: 0 auto;
+  border-radius: 15px;
+
+
+}
+
+.imagen {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  visibility: hidden;
+  opacity: 0;
+
+  img {
+    height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.actual {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+  }
+}
+
+.puntos {
+  position: absolute;
+  top: 93%;
+  width: 100%;
+  text-align: center;
+
+  .punto {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: gray;
+    }
+
+    &.activo {
+      background-color: gray;
+    }
+  }
+}
+
+.social-media{
+  text-align: center;
+}
+/* Wrapper */
+.icon-button {
+	background-color: white;
+	border-radius: 3.6rem;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 2.0rem;
+	height: 3.6rem;
+	line-height: 3.6rem;
+	margin: 0 5px;
+	position: relative;
+	text-align: center;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	width: 3.6rem;
+}
+
+/* Circle */
+.icon-button span {
+	border-radius: 0;
+	display: block;
+	height: 0;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 0;
+}
+.icon-button:hover span {
+	width: 3.6rem;
+	height: 3.6rem;
+	border-radius: 3.6rem;
+	margin: -1.8rem;
+}
+.instagram span {
+  background-color: #bc2a8d;
+}
+
+/* Icons */
+.icon-button i {
+	background: none;
+	color: white;
+	height: 3.6rem;
+	left: 0;
+	line-height: 3.6rem;
+	position: absolute;
+	top: 0;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 3.6rem;
+	z-index: 10;
+}
+.icon-button .fa-instagram {
+	color: #4099ff;
+}
+.icon-button:hover .fa-instagram{
+	color: white;
+}
+
+
+
+
+
+@keyframes line {
+  0% {
+    background-position-x: 390px;
+  }
+}

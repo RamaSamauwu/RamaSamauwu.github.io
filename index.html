@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/logo.png" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lumanosimo"
+    />
+    <title>RamaSamART</title>
+  </head>
+  <body>
+    <!--Barra de navegación-->
+    <nav>
+      <h1 class="titulo">RamaSama</h1>
+      <ul class="menu">
+        <li>
+          <a href="/src/ilustraciones.html"> illustrations </a>
+        </li>
+        <li>
+          <a href="/src/cv.html"> CV </a>
+        </li>
+        <li>
+          <a href="/src/contacto.html"> Contact </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="contenedor" id="contenedor-landing">
+      <!--Imagenes que se generarran solas-->
+      <div class="imagen actual">
+        <img src="" alt="" />
+      </div>
+      <div class="imagen">
+        <img src="" alt="" />
+      </div>
+      <div class="imagen">
+        <img src="" alt="" />
+      </div>
+      <div class="imagen">
+        <img src="" alt="" />
+      </div>
+
+      <div class="puntos">
+        <span class="punto activo" onclick="mostrar(0);"></span>
+        <span class="punto" onclick="mostrar(1);"></span>
+        <span class="punto" onclick="mostrar(2);"></span>
+        <span class="punto" onclick="mostrar(3);"></span>
+      </div>
+    </div>
+
+    <script src="/src/script-land.js"></script>
+  </body>
+</html>
