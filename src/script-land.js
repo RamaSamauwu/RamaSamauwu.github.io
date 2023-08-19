@@ -1,7 +1,7 @@
 const imagenesContenedor = document.getElementById("contenedor-landing");
 
 function redirectToIlustraciones() {
-  window.location.href = "ilustraciones.html";
+  window.location.href = "./ilustraciones.html";
 }
 
 const imagenes = imagenesContenedor.getElementsByClassName("imagen");
@@ -31,7 +31,7 @@ function mostrarImagenesAleatorias(data) {
 
 // Petición HTTP para cargar el JSON
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "ilustraciones.json");
+xhr.open("GET", "./ilustraciones.json");
 xhr.onload = function () {
   if (xhr.status === 200) {
     const ilustracionesJSON = JSON.parse(xhr.responseText);
