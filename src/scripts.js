@@ -4,7 +4,7 @@ const imagenAmpliada = document.getElementById("imagen-ampliada");
 const cerrar = document.getElementById("cerrar");
 
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "ilustraciones.json");
+xhr.open("GET", "./ilustraciones.json");
 xhr.onload = function () {
   if (xhr.status === 200) {
     const data = JSON.parse(xhr.responseText);
