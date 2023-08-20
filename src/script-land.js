@@ -31,7 +31,7 @@ function mostrarImagenesAleatorias(data) {
 
 // Petición HTTP para cargar el JSON
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "./ilustraciones.json");
+xhr.open("GET", "/src/ilustraciones.json");
 xhr.onload = function () {
   if (xhr.status === 200) {
     const ilustracionesJSON = JSON.parse(xhr.responseText);
