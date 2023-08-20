@@ -1,7 +1,7 @@
 const imagenesContenedor = document.getElementById("contenedor-landing");
 
 function redirectToIlustraciones() {
-  window.location.href = "./ilustraciones.html";
+  window.location.href = "/src/ilustraciones.html";
 }
 
 const imagenes = imagenesContenedor.getElementsByClassName("imagen");
@@ -9,11 +9,26 @@ for (let i = 0; i < imagenes.length; i++) {
   imagenes[i].addEventListener("click", redirectToIlustraciones);
 }
 
-
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+async function cargarIlustraciones() {
+  try {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/RamaSamauwu/RamaSamauwu.github.io/main/src/Ilustraciones.json"
+    );
+    if (response.ok) {
+      const ilustracionesJSON = await response.json();
+      mostrarImagenesAleatorias(ilustracionesJSON);
+    } else {
+      console.error("Error al cargar el JSON de ilustraciones.");
+    }
+  } catch (error) {
+    console.error("Error al cargar el JSON de ilustraciones:", error);
   }
 }
 
@@ -29,57 +44,42 @@ function mostrarImagenesAleatorias(data) {
   }
 }
 
-// Petición HTTP para cargar el JSON
-const xhr = new XMLHttpRequest();
-xhr.open("GET", "./ilustraciones.json");
-xhr.onload = function () {
-  if (xhr.status === 200) {
-    const ilustracionesJSON = JSON.parse(xhr.responseText);
-    mostrarImagenesAleatorias(ilustracionesJSON);
-  } else {
-    console.error("Error al cargar el JSON de ilustraciones.");
-  }
-};
-xhr.send();
+cargarIlustraciones();
 
-var actual = 0;
+let actual = 0;
 function puntos(n) {
-  var ptn = document.getElementsByClassName("punto");
-  for (i = 0; i < ptn.length; i++) {
-    if (ptn[i].className.includes("activo")) {
-      ptn[i].className = ptn[i].className.replace("activo", "");
+  const ptn = document.getElementsByClassName("punto");
+  for (let i = 0; i < ptn.length; i++) {
+    if (ptn[i].classList.contains("activo")) {
+      ptn[i].classList.remove("activo");
       break;
     }
   }
-  ptn[n].className += " activo";
+  ptn[n].classList.add("activo");
 }
+
 function mostrar(n) {
-  var imagenes = document.getElementsByClassName("imagen");
-  for (i = 0; i < imagenes.length; i++) {
-    if (imagenes[i].className.includes("actual")) {
-      imagenes[i].className = imagenes[i].className.replace("actual", "");
+  const imagenes = document.getElementsByClassName("imagen");
+  for (let i = 0; i < imagenes.length; i++) {
+    if (imagenes[i].classList.contains("actual")) {
+      imagenes[i].classList.remove("actual");
       break;
     }
   }
   actual = n;
-  imagenes[n].className += " actual";
+  imagenes[n].classList.add("actual");
   puntos(n);
 }
 
 function siguiente() {
-  actual++;
-  if (actual > 3) {
-    actual = 0;
-  }
-  mostrar(actual);
-}
-function anterior() {
-  actual--;
-  if (actual < 0) {
-    actual = 3;
-  }
+  actual = (actual + 1) % 4;
   mostrar(actual);
 }
 
-var velocidad = 5000;
-var play = setInterval("siguiente()", velocidad);
+function anterior() {
+  actual = (actual - 1 + 4) % 4;
+  mostrar(actual);
+}
+
+const velocidad = 5000;
+const play = setInterval(siguiente, velocidad);
